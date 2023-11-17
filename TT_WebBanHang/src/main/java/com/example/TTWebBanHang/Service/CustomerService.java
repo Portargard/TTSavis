@@ -12,5 +12,8 @@ public interface CustomerService {
     public Customer update(Customer customer, UUID id);
     public void delete(UUID id);
     public List<Customer> getAllCustomer();
+
     public Page<Customer> pagination(Pageable pageable);
+
+    public Customer getOne(UUID id);
 }

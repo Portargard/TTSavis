@@ -1,9 +1,9 @@
 package com.example.TTWebBanHang.Controller;
 
-import com.example.TTWebBanHang.Entity.Author;
+import com.example.TTWebBanHang.Entity.BillDetail;
 import com.example.TTWebBanHang.Entity.OperationStatusModel;
 import com.example.TTWebBanHang.Entity.RequestOperationStatus;
-import com.example.TTWebBanHang.Service.Impl.AuthorImplService;
+import com.example.TTWebBanHang.Service.Impl.BillDetailImplService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -22,39 +22,39 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("savis/author")
-public class AuthorController {
-    @Autowired
-    private AuthorImplService authorImplService;
+@RequestMapping("savis/bill-detail")
+public class BillDetailController {
 
+    @Autowired
+    private BillDetailImplService billDetailImplService;
 
     @GetMapping("")
-    public ResponseEntity<Page<Author>> findall(@RequestParam(value = "page", defaultValue = "0") int page) {
+    public ResponseEntity<Page<BillDetail>> findall(@RequestParam(value = "page", defaultValue = "0") int page) {
         Pageable pageable = PageRequest.of(page, 10);
 
-        Page<Author> authors = authorImplService.findAll(pageable);
-        return ResponseEntity.ok(authors);
+        Page<BillDetail> billDetails = billDetailImplService.findAll(pageable);
+        return ResponseEntity.ok(billDetails);
     }
 
     @PostMapping("")
-    public  ResponseEntity<Author> add(@RequestBody Author author){
-        Author authorSave = authorImplService.add(author);
-        return ResponseEntity.ok(authorSave);
+    public  ResponseEntity<BillDetail> add(@RequestBody BillDetail billDetail){
+        BillDetail billDetailSave = billDetailImplService.add(billDetail);
+        return ResponseEntity.ok(billDetailSave);
 
     }
 
     @PutMapping("/{id}")
-    private ResponseEntity<Author> update(@RequestBody Author author,
-                                                @PathVariable("id") UUID maht) {
+    private ResponseEntity<BillDetail> update(@RequestBody BillDetail billDetail,
+                                          @PathVariable("id") UUID maht) {
 
-        Author authorCheck = authorImplService.getOne(maht);
-        if (authorCheck == null) {
+        BillDetail billDetailCheck = billDetailImplService.getOne(maht);
+        if (billDetailCheck == null) {
             return ResponseEntity.notFound().build();
         }
-        author.setId(maht);
-        Author authorUpdate = authorImplService.update(author);
+        billDetail.setId(maht);
+        BillDetail billDetailUpdate = billDetailImplService.update(billDetail);
 
-        return ResponseEntity.ok(authorUpdate);
+        return ResponseEntity.ok(billDetailUpdate);
 
 
     }
@@ -65,12 +65,11 @@ public class AuthorController {
         OperationStatusModel returnValue = new OperationStatusModel();
         returnValue.setOperationName(RequestOperationName.DELETE.name());
 
-        authorImplService.delete(id);
+        billDetailImplService.delete(id);
 
         returnValue.setOperationResult(RequestOperationStatus.SUCCESS.name());
 
 
         return returnValue;
     }
-
 }

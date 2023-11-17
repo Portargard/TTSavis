@@ -2,8 +2,6 @@ package com.example.TTWebBanHang.Controller;
 
 import com.example.TTWebBanHang.Entity.Author;
 import com.example.TTWebBanHang.Entity.Book;
-import com.example.TTWebBanHang.Entity.BookSize;
-import com.example.TTWebBanHang.Entity.Category;
 import com.example.TTWebBanHang.Entity.OperationStatusModel;
 import com.example.TTWebBanHang.Entity.Pulisher;
 import com.example.TTWebBanHang.Entity.Realm;
@@ -18,7 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,6 +33,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("savis/book")
+@CrossOrigin
 public class BookController {
 
     @Autowired
@@ -52,7 +53,7 @@ public class BookController {
 
     @GetMapping()
     private ResponseEntity<Page<Book>> getall(@RequestParam(name = "page", defaultValue = "0") int page) {
-        Pageable pageable = PageRequest.of(page, 10);
+        Pageable pageable = PageRequest.of(page, 10, Sort.by("ma").descending());
         Page<Book> books = bookImplService.findAll(pageable);
         return ResponseEntity.ok(books);
     }
@@ -74,7 +75,7 @@ public class BookController {
         book.setPulisher(pulisher);
         book.setAuthor(author);
         book.setSale(sale);
-
+        System.out.println(book.getMoTa());
         Book booksave = bookImplService.add(book);
 
         return ResponseEntity.ok(booksave);
@@ -111,7 +112,7 @@ public class BookController {
     }
 
     @DeleteMapping("/{id}")
-    public OperationStatusModel delete(@PathVariable("id") UUID id){
+    public OperationStatusModel delete(@PathVariable("id") UUID id) {
 
         OperationStatusModel returnValue = new OperationStatusModel();
         returnValue.setOperationName(RequestOperationName.DELETE.name());
@@ -120,7 +121,12 @@ public class BookController {
 
         returnValue.setOperationResult(RequestOperationStatus.SUCCESS.name());
 
-
         return returnValue;
+    }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<Book> getOne(@PathVariable("id") UUID id) {
+        Book book = bookImplService.getOne(id);
+        return ResponseEntity.ok(book);
     }
 }

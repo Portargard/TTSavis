@@ -1,11 +1,13 @@
 package com.example.TTWebBanHang.Entity;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +15,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.Date;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -23,26 +24,27 @@ import java.util.UUID;
 @ToString
 
 @Entity
-@Table(name = "author")
-public class Author {
-
+@Table(name = "BillDetail")
+public class BillDetail {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
     private UUID id;
 
-    @Column(name = "ma")
-    private String ma;
+    @ManyToOne
+    @JoinColumn(name = "BillID")
+    private Bill bill;
 
-    @Column(name = "tentacgia")
-    private String tenTacGia;
+    @ManyToOne
+    @JoinColumn(name = "BookID")
+    private Book book;
 
-    @Column(name = "ngaysinh")
-    private Date ngaySinh;
+    @Column(name = "CustomerID")
+    private UUID customerID;
 
-    @Column(name = "ngaymat")
-    private Date ngayMat;
+    @Column(name = "SoLuong")
+    private int soLuong;
 
-    @Lob
-    @Column(name = "tieusu")
-    private String tieuSu;
+    @Column(name = "TongTien")
+    private float tongTien;
 }

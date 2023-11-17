@@ -1,15 +1,15 @@
 package com.example.TTWebBanHang.Service.Impl;
 
-import com.example.TTWebBanHang.Entity.Author;
+
 import com.example.TTWebBanHang.Entity.Book;
 import com.example.TTWebBanHang.Entity.ErrorMessages;
-import com.example.TTWebBanHang.Exceptions.AllServiceException;
 import com.example.TTWebBanHang.Repository.BookRepository;
 import com.example.TTWebBanHang.Service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import com.example.TTWebBanHang.Exceptions.AllServiceException;
 
 import java.util.UUID;
 
@@ -21,6 +21,7 @@ public class BookImplService implements BookService {
 
     @Override
     public Page<Book> findAll(Pageable pageable) {
+        
         return bookRepository.findAll(pageable);
     }
 
@@ -43,10 +44,11 @@ public class BookImplService implements BookService {
     public void delete(UUID id) {
         Book book = bookRepository.findById(id).orElse(null);
 
-        if(book == null){
+        if (book == null) {
             throw new AllServiceException(ErrorMessages.NO_RECORD_FOUND.getErrorMessage());
         }
 
         bookRepository.deleteById(id);
     }
+
 }

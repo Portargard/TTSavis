@@ -17,4 +17,6 @@ public interface BookService {
     Book update(Book book);
 
     void delete(UUID id);
+
+
 }
