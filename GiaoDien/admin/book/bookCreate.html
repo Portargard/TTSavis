@@ -165,22 +165,6 @@
     </section>
 
     <div id="footer-container"></div>
-<script>
-      // Sử dụng Fetch để tải nội dung từ header.html
-      fetch("../header.html")
-        .then((response) => response.text())
-        .then((data) => {
-          // Chèn nội dung vào #header-container
-          document.getElementById("header-container").innerHTML = data;
-        });
-      fetch("../footer.html")
-        .then((response) => response.text())
-        .then((data) => {
-          // Chèn nội dung vào #header-container
-          document.getElementById("footer-container").innerHTML = data;
-        });
-        
-    </script>
     <script src="../js/bookCreate.js"></script>
   </body>
 </html>

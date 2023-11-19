@@ -53,7 +53,7 @@ function renderBookDetail(book) {
   var price = "";
   var price_sale = "";
   var sale = "";
-  if (book.sale!=null) {
+  if (book.sale) {
     sale = book.giaBan - book.sale.giaTri;
     price = sale.toLocaleString("en-US") + "đ";
     price_sale = book.giaBan.toLocaleString("en-US") + "đ";

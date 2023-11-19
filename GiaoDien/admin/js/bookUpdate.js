@@ -272,7 +272,8 @@ function handleUpdateForm() {
       alert("Sửa thành công");
       window.location.href = "books.html";
     } else {
-      var file = image.files[0];
+      var file = imageBook.files[0];
+      console.log(file)
 
       convertToBase64(file, function (error, base64String) {
         if (error) {
