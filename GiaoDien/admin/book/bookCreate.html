@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+      integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../css/book.css" />
+    <style>
+      body {
+        background: rgb(222, 222, 222);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header-container"></div>
+
+    <section class="container">
+      <div class="title">
+        <a href="books.html" class="btn btn-primary">Quay lại</a>
+        <h4>Thêm Sách</h4>
+        <span></span>
+      </div>
+      <form action="#" class="form-submit" method="post">
+        <div class="mb-3 row">
+          <label for="name" class="col-sm-2 col-form-label">Tên sách</label>
+          <div class="col-sm-10">
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              name="name"
+              required
+            />
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="realm" class="col-sm-2 col-form-label">Lĩnh vực</label>
+          <div class="col-sm-10">
+            <select
+              class="form-select"
+              id="realm"
+              name="realm"
+              required
+            ></select>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="author" class="col-sm-2 col-form-label">Tác giả</label>
+          <div class="col-sm-10">
+            <select
+              class="form-select"
+              id="author"
+              name="author"
+              required
+            ></select>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="pulisher" class="col-sm-2 col-form-label"
+            >Nhà xuất bản</label
+          >
+          <div class="col-sm-10">
+            <select
+              class="form-select"
+              id="pulisher"
+              name="pulisher"
+              required
+            ></select>
+          </div>
+        </div>
+        <!-- <div class="mb-3 row">
+          <label for="pulisher" class="col-sm-2 col-form-label">sale</label>
+          <div class="col-sm-10">
+            <select class="form-select" id="pulisher"></select>
+          </div>
+        </div> -->
+        <div class="mb-3 row">
+          <label for="weight" class="col-sm-2 col-form-label"
+            >Trọng lượng</label
+          >
+          <div class="col-sm-10">
+            <input
+              type="number"
+              class="form-control"
+              id="weight"
+              name="weight"
+              required
+            />
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="quantity" class="col-sm-2 col-form-label">Số lượng</label>
+          <div class="col-sm-10">
+            <input
+              type="number"
+              class="form-control"
+              id="quantity"
+              name="quantity"
+              required
+            />
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="importPrice" class="col-sm-2 col-form-label"
+            >Giá nhập</label
+          >
+          <div class="col-sm-10">
+            <input
+              type="number"
+              class="form-control"
+              id="importPrice"
+              name="importPrice"
+              required
+            />
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="price" class="col-sm-2 col-form-label">Giá bán</label>
+          <div class="col-sm-10">
+            <input
+              type="number"
+              class="form-control"
+              id="price"
+              name="price"
+              required
+            />
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="image" class="col-sm-2 col-form-label">Hình ảnh</label>
+          <div class="col-sm-10">
+            <input
+              type="file"
+              class="form-control"
+              id="image"
+              name="image"
+              accept=".png, .jpg, .jpeg., .gif"
+            />
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="description" class="col-sm-2 col-form-label">Mô tả</label>
+          <div class="col-sm-10">
+            <textarea
+              rows="4"
+              class="form-control"
+              id="description"
+              name="description"
+            ></textarea>
+          </div>
+        </div>
+        <button class="btn btn-primary" id="create">Create</button>
+      </form>
+    </section>
+
+    <div id="footer-container"></div>
+<script>
+      // Sử dụng Fetch để tải nội dung từ header.html
+      fetch("../header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          // Chèn nội dung vào #header-container
+          document.getElementById("header-container").innerHTML = data;
+        });
+      fetch("../footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          // Chèn nội dung vào #header-container
+          document.getElementById("footer-container").innerHTML = data;
+        });
+        
+    </script>
+    <script src="../js/bookCreate.js"></script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+footer{
+    background-color: white;
+}
+section{
+    
+    background-color: white;
+}
+.title{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}

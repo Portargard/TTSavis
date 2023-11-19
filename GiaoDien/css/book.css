@@ -1,0 +1,22 @@
+.image_book{
+    width: 224px;
+    height: 224px;
+    object-fit: cover;
+}
+.book_name{
+    text-decoration: none;
+    color: black;
+}
+.price_sale{
+    font-weight: bold;
+    color: rgb(201, 33, 39);
+    padding-bottom: 0;
+    margin-bottom: 0;
+    font-size: 20px;
+}
+.price{
+    color: rgb(136, 136, 136);
+}
+.book_card{
+    margin: 10px;
+}

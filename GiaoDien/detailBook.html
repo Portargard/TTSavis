@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+      integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="Chat_Bot/chatbot.css" />
+    <link rel="stylesheet" href="css/bookDetail.css" />
+    <script src="Chat_Bot/chatbot.js"></script>
+  </head>
+  <body>
+    <div id="header-container"></div>
+
+    <section class="container-fluid">
+      <div class="box">
+        <div class="row">
+          <div class="col-5 box-2">
+            <div class="img">
+              <img src="image/thoXuanDieu.jpg" alt="tho" class="image-main" id="image-name"/>
+            </div>
+          </div>
+          <div class="col-7 container info box-2">
+            <p id="nameBook">Thơ Xuân Diệu</p>
+            <div id="info-small">
+              <span>Nhà xuất bản: <b style="font-size: 15px;" id="publisher">NXB Văn học</b></span>
+              <span>Tác giả: <b style="font-size: 15px;" id="author">Xuân Diệu</b></span>
+            </div>
+            <p id="price"><span id="price-sale">55.250 đ</span> <del id="begin-price">65.000 đ</del></p>
+            <p>
+              <b>Số lượng: </b>
+              <div class="quantity-box">
+                <a class="btn btn-subtract-qty" onclick="subtractQty()"><i class="bi bi-dash"></i></a>
+                <input type="text" id="qty"  oninput="validateNumber(this)" onblur="validateQty()" value="1"> 
+                <a  class="btn btn-plus-qty" onclick="addQty()"><i class="bi bi-plus-lg"></i></a>
+              </div>
+            </p>
+            <div>
+              <a class="btn btn-outline-success" id="addToCart">Thêm vào giỏ hàng</a>
+              <a class="btn btn-success" id="buyNow">Mua ngay</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="box ">
+        <div id="detail" class="container-fluid">
+          <h5><b>Thông tin sản phẩm</b></h5>
+          <div>
+            <table id="detail-book">
+              <tr>
+                <td class="name">Mã hàng</td>
+                <td id="table-ma">8935095627370</td>
+              </tr>
+              <tr>
+                <td class="name">Nhà xuất bản</td>
+                <td id="table-publisher">NXB Văn học</td>
+              </tr>
+              <tr>
+                <td class="name">Tác giả</td>
+                <td id="table-author">Xuân Diệu</td>
+              </tr>
+              <tr>
+                <td class="name">Trọng lượng(gr)</td>
+                <td id="table-weight">210</td>
+              </tr>
+            </table>
+          </div>
+          <h6><b>Mô tả</b></h6>
+          <p id="story">
+            Trong sự nghiệp sáng tác thơ văn của mình, Xuân Diệu được biết đến như là
+            một nhà thơ lãng mạn trữ tình, “Nhà thơ mới nhất trong các nhà thơ mới”
+            (Hoài Thanh), “Ông hoàng của thơ tình”. Xuân Diệu là thành viên của Tự Lực
+            Văn Đoàn và cũng đã là một trong những chủ soái của phong trào “Thơ Mới”.
+            Tác phẩm tiêu biểu của ông ở giai đoạn này: Thơ Thơ (1938), Gửi hương cho
+            gió (1945), truyện ngắn Phấn thông vàng (1939), Trường ca (1945). Xuân
+            Diệu tham gia ban chấp hành, nhiều năm là ủy viên thường vụ Hội Nhà văn
+            Việt Nam. Từ đó, Xuân Diệu trở thành một trong những nhà thơ hàng đầu ca
+            ngợi Cách mạng, một “dòng thơ công dân”. Bút pháp của ông chuyển biến
+            phong phú về giọng vẻ: có giọng trầm hùng, tráng ca, có giọng chính luận,
+            giọng thơ tự sự trữ tình. Tiêu biểu là: Ngọn quốc kỳ (1945), Một khối hồng
+            (1964), Thanh ca (1982), Tuyển tập Xuân Diệu (1983).
+          </p>
+        </div>
+        
+      </div>
+    </section>
+
+    <div class="chatbot1">
+      <button class="btn_chatbot" onclick="show_chat_bot()">
+        <i class="bi bi-chat"></i>
+      </button>
+    </div>
+    <div class="chatbot">
+      <div class="card">
+        <div id="header">
+          <h1 style="display: flex; justify-content: space-between">
+            <span></span>
+            <i class="bi bi-x" id="cancel" onclick="hide_chat_box()"></i>
+          </h1>
+        </div>
+        <div id="message-section">
+          <div class="message" id="bot">
+            <span id="bot-response">Hello.. I'm listening! Go on..</span>
+          </div>
+        </div>
+        <div id="input-section">
+          <input
+            id="input"
+            type="text"
+            placeholder="Type a message"
+            autocomplete="off"
+            autofocus="autofocus"
+          />
+          <button class="send" onclick="sendMessage()">
+            <div class="circle"><i class="bi bi-send"></i></div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer-container"></div>
+    <script src="js/bookDetail.js"></script>
+    <script>
+      // Sử dụng Fetch để tải nội dung từ header.html
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          // Chèn nội dung vào #header-container
+          document.getElementById("header-container").innerHTML = data;
+        });
+      fetch("footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          // Chèn nội dung vào #header-container
+          document.getElementById("footer-container").innerHTML = data;
+        });
+    </script>
+  </body>
+</html>

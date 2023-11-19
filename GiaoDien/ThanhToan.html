@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giao Diện Trang Chủ Savis</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"
+      integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="Chat_Bot/chatbot.css" />
+    <script src="Chat_Bot/chatbot.js"></script>
+    <link rel="stylesheet" href="css/book.css" />
+  </head>
+  <body>
+    <div id="header-container"></div>
+
+    <div class="wrapper">
+      <div class="container">
+        <div class="row justify-content-center">
+          <form action="" class="col-md-6 bg-light p-3 my-3">
+            <h1 class="text-center text-uppercase h3 py-3">
+              Xác nhận thanh toán hóa đơn <span class="h3" id="billCode"></span>
+            </h1>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Sản phẩm</th>
+                  <th scope="col">Số Lượng</th>
+                  <th scope="col">Đơn giá</th>
+                  <th scope="col">Tổng</th>
+                </tr>
+              </thead>
+              <tbody id="info-bill">
+                <tr>
+                  <td scope="row">Note: Cái này để show Sản phẩm mua</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td scope="row"></td>
+                  <td colspan="2">Tính tổng tiền tất cả sản phẩm ở đây</td>
+                </tr>
+                <tr>
+                  <td colspan="3">
+                    <button class="btn btn-success my-3" type="submit">
+                      Xác nhận
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="chatbot1">
+      <button class="btn_chatbot" onclick="show_chat_bot()">
+        <i class="bi bi-chat"></i>
+      </button>
+    </div>
+    <div class="chatbot">
+      <div class="card">
+        <div id="header">
+          <h1 style="display: flex; justify-content: space-between">
+            <span></span>
+            <i class="bi bi-x" id="cancel" onclick="hide_chat_box()"></i>
+          </h1>
+        </div>
+        <div id="message-section">
+          <div class="message" id="bot">
+            <span id="bot-response">Hello.. I'm listening! Go on..</span>
+          </div>
+        </div>
+        <div id="input-section">
+          <input
+            id="input"
+            type="text"
+            placeholder="Type a message"
+            autocomplete="off"
+            autofocus="autofocus"
+          />
+          <button class="send" onclick="sendMessage()">
+            <div class="circle"><i class="bi bi-send"></i></div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer-container"></div>
+    <script>
+      // Sử dụng Fetch để tải nội dung từ header.html
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          // Chèn nội dung vào #header-container
+          document.getElementById("header-container").innerHTML = data;
+        });
+      fetch("footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          // Chèn nội dung vào #header-container
+          document.getElementById("footer-container").innerHTML = data;
+        });
+    </script>
+    <script src="js/thanhToan.js"></script>
+  </body>
+</html>

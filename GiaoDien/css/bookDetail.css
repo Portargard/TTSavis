@@ -1,0 +1,87 @@
+.box {
+  width: 85%;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+.box-2{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image-main {
+  max-width: 400px;
+  max-height: 450px;
+
+  /* object-fit: contain; */
+}
+
+#info-small {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+#info-small > span {
+  font-size: 15px;
+}
+
+.info > p {
+  font-size: 25px;
+  line-height: 50px;
+  margin-bottom: 20px;
+  
+}
+#price{
+    line-height: 80px;
+    margin: 0;
+}
+#price>span{
+    font-size: 35px;
+    font-weight: bolder;
+    color: rgb(201, 33, 39);
+}
+#price>del{
+    font-size: 15px;
+}
+
+.quantity-box{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 195px;
+}
+#qty{
+    max-width: 70px;
+    outline: none;
+    border: none;
+    line-height: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+.btn-subtract-qty, .btn-plus-qty{
+    outline: none;
+    border: none;
+    
+}
+
+#detail{
+  margin-top: 10px;
+}
+.name{
+  width: 250px;
+}
+
+#detail-book td{
+  font-size: 17px;
+  color: rgb(119, 119, 141);
+}
+
+#story{
+  line-height: 30px;
+  font-size: 16px;
+}

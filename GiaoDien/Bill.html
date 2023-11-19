@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giao Diện Trang Chủ Savis</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="chatbot.css" />
+    <script src="chatbot.js"></script>
+    <link src="chatbot.html" />
+  </head>
+  <body>
+    <div id="header-container"></div>
+
+    <div class="wrapper">
+      <div class="container">
+        <div class="row justify-content-center">
+          <form action="" class="col-md-6 bg-light p-3 my-3">
+            <h1 class="text-center text-uppercase h3 py-3">Đơn hàng đã đặt</h1>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Đơn hàng</th>
+                  <th scope="col">Ngày đặt</th>
+                  <th scope="col">Thanh toán</th>
+                  <th scope="col">Giao hàng</th>
+                  <th scope="col">Tổng tiền</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"></th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th scope="row"></th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th scope="row"></th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer-container"></div>
+    <script>
+      // Sử dụng Fetch để tải nội dung từ header.html
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          // Chèn nội dung vào #header-container
+          document.getElementById("header-container").innerHTML = data;
+        });
+      fetch("footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          // Chèn nội dung vào #header-container
+          document.getElementById("footer-container").innerHTML = data;
+        });
+    </script>
+  </body>
+</html>
